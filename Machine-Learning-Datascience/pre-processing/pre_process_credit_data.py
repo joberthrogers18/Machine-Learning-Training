@@ -32,3 +32,12 @@ imputer = SimpleImputer(missing_values=np.nan, strategy="mean")
 # atualizando a base com esses atributos ruins descartados
 imputer = imputer.fit(previsors[:, 0:3])
 previsors[:, 0:3] = imputer.transform(previsors[:, 0:3])
+
+
+# Fazendo a normalização dos atributos para algoritimos como
+# KNN não considerar valores que são maiores em uma feature com mais prioriade
+# do que outros que podem ser menores, como é o caso da renda e idade dessa base
+from sklearn.preprocessing import StandardScaler
+scaler = StandardScaler()
+previsors = scaler.fit_transform(previsors)
+
