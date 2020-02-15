@@ -35,4 +35,4 @@ previsors = scaler.fit_transform(previsors)
 
 # dividir em base de treino e teste
 from sklearn.model_selection import train_test_split
-previsors_train, previsors_test, classe_train, classe_test = train_test_split(previsors, classe, test_size=0.25, random_state=0)
+previsors_train, previsors_test, classe_train, classe_test = train_test_split(previsors, classe, test_size=0.15, random_state=0)
