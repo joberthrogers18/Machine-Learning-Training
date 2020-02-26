@@ -32,4 +32,14 @@ previsores = scaler.fit_transform(previsores)
 from sklearn.model_selection import train_test_split
 previsores_treinamento, previsores_teste, classe_treinamento, classe_teste = train_test_split(previsores, classe, test_size=0.25, random_state=0)
 
-import sklearn.naive_bayes import Gua
+# Usando Naive Bayes
+from sklearn.naive_bayes import GaussianNB
+modelo = GaussianNB()
+modelo = modelo.fit(previsores_treinamento, classe_treinamento)
+
+previsoes = modelo.predict(previsores_teste)
+
+# verificando a precisão
+from sklearn.metrics import confusion_matrix,accuracy_score
+precisao = accuracy_score(classe_teste, previsoes)
+matriz = confusion_matrix(classe_teste, previsoes)
