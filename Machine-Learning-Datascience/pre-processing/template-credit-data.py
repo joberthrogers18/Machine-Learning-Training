@@ -23,3 +23,11 @@ previsores = scaler.fit_transform(previsores)
 # dividir em base de treino e teste
 from sklearn.model_selection import train_test_split
 previsores_treinamento, previsores_teste, classe_treinamento, classe_teste = train_test_split(previsores, classe, test_size=0.25, random_state=0)
+
+from sklearn.metrics import accuracy_score, confusion_matrix
+precision = accuracy_score(previsores_teste, previsores_treinamento)
+matrix = confusion_matrix(previsores_teste, previsores_treinamento)
+
+import collections
+
+collections.Counter(classe_teste)
