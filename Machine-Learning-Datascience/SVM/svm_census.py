@@ -1,6 +1,6 @@
 import pandas as pd
 
-base = pd.read_csv('../pre-processing/census.csv')
+base = pd.read_csv('census.csv')
 
 # Separando atributos previsores e de previsão(classe) que será supervisionado
 previsors = base.iloc[:, 0:14].values
@@ -37,13 +37,14 @@ previsors = scaler.fit_transform(previsors)
 from sklearn.model_selection import train_test_split
 previsors_train, previsors_test, classe_train, classe_test = train_test_split(previsors, classe, test_size=0.15, random_state=0)
 
-from sklearn.linear_model import LogisticRegression
 
-classifier = LogisticRegression()
+from sklearn.svm import SVC
+classifier = SVC(kernel='linear', random_state=1)
 classifier.fit(previsors_train, classe_train)
 previsions = classifier.predict(previsors_test)
 
 from sklearn.metrics import accuracy_score, confusion_matrix
-
 precision = accuracy_score(previsions, classe_test)
 matrix = confusion_matrix(previsions, classe_test)
+
+# com algoritimo SVM com kernel linear a precisão foi de 98%
