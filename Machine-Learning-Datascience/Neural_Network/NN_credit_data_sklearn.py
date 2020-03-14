@@ -32,14 +32,14 @@ from sklearn.neural_network import MLPClassifier
 classifier = MLPClassifier(
         verbose=True,
         max_iter=1000,
-        tol=0.000010,
+        tol=0.0000010,
         solver='adam',
         hidden_layer_sizes=(100,100),
         activation='relu'
     )
 classifier.fit(previsors_train, classe_train)
-precision = classifier.predict(previsors_test)
+previsions = classifier.predict(previsors_test)
 
 from sklearn.metrics import accuracy_score, confusion_matrix
-precision = accuracy_score(precision, classe_test)
-matrix = confusion_matrix(precision, classe_test)
+precision = accuracy_score(previsions, classe_test)
+matrix = confusion_matrix(previsions, classe_test)
