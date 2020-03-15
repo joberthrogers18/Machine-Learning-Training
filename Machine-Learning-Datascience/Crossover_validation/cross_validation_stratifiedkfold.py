@@ -33,6 +33,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 kfold = StratifiedKFold(n_splits=10, shuffle=True, random_state= 0)
 results  = []
 result_accuracy = []
+matrizes = []
 for indice_train, indice_test in kfold.split(previsors,
                                              np.zeros(shape=(previsors.shape[0], 1 ))):
     #print('Indice training ', indice_train, ' Indice test ', indice_test)
@@ -41,6 +42,11 @@ for indice_train, indice_test in kfold.split(previsors,
     previsions = classifier.predict(previsors[indice_test])
     results.append({'acc': accuracy_score(previsions, classe[indice_test]), 'matrix': confusion_matrix(previsions, classe[indice_test])})
     result_accuracy.append(accuracy_score(previsions, classe[indice_test]))
+    matrizes.append(confusion_matrix(previsions, classe[indice_test]))
+
+# fazendo media de todas as matrizes de confusão
+# axis 0 é para pegar por linha, sem isso ele não consegue separar as colunas
+matrix_final = np.mean(matrizes, axis=0) 
 
 result_accuracy = np.asarray(result_accuracy)
 result_accuracy.mean()
