@@ -1,3 +1,3 @@
 # Machine Learning and Deep Learning Training
 
-#### This repository there is all my personal projects in Machine learning and Deep Learning area. Here is covered by several examples since pre processing data (using panda, numpy and others) till the creation and prediction models with libs like sklearn and tensorflow.
+#### In this repository there is all my personal projects in Machine learning and Deep Learning area. Here you can find many examples since the pre processing data section  (using pandas, numpy and others) untill the models creation and prediction with libs like sklearn and tensorflow.
